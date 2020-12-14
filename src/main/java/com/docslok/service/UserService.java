@@ -39,10 +39,10 @@ public class UserService {
     public User saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setAccount_status(AccountStatus.ACTIVE);
+        user.setEmail_verified(false);
         user.setActive(true);
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         return userRepository.save(user);
     }
-
 }

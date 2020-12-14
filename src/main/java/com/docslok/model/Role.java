@@ -5,10 +5,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ROLES")
 public class Role {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ROLE_ID")
     private int id;
+    
     @Column(name = "ROLE")
     private String role;
     
@@ -24,6 +26,5 @@ public class Role {
 	public void setRole(String role) {
 		this.role = role;
 	}
-    
     
 }

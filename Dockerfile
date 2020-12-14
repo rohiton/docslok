@@ -1,8 +1,5 @@
 FROM openjdk:11
-
 EXPOSE 8080
-
-ARG JAR_FILE=target/login-tutorial.jar
-ADD ${JAR_FILE} login-tutorial.jar
-
-ENTRYPOINT ["java", "-jar", "/login-tutorial.jar"]
+ARG WAR_FILE=target/docslok-1.0.war
+ADD ${WAR_FILE} docslok-1.0.war
+ENTRYPOINT ["java", "-jar", "/docslok-1.0.war"]

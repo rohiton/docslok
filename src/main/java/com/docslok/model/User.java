@@ -1,10 +1,6 @@
 package com.docslok.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Entity
@@ -16,10 +12,10 @@ public class User {
     @Column(name = "USER_ID")
     private Integer user_id;
     
-    @Column(name = "USERNAME")
+    @Column(name = "USERNAME",unique=true)
     private String username;
 
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL",unique=true)
     private String email;
 
     @Column(name = "PASSWORD")
@@ -36,6 +32,9 @@ public class User {
     
     @Column(name = "ACTIVE")
     private Boolean active;
+    
+    @Column(name = "EMAIL_VERIFIED")
+    private Boolean email_verified;
     
     public enum AccountStatus{
     	ACTIVE, SUSPENDED, DROPPED
@@ -113,6 +112,14 @@ public class User {
 		this.active = active;
 	}
 
+	public Boolean getEmail_verified() {
+		return email_verified;
+	}
+
+	public void setEmail_verified(Boolean email_verified) {
+		this.email_verified = email_verified;
+	}
+
 	public AccountStatus getAccount_status() {
 		return account_status;
 	}
@@ -128,6 +135,4 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
-    
 }
