@@ -33,23 +33,25 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.
 		authorizeRequests()
-		.antMatchers("/").permitAll()
-		.antMatchers("/login").permitAll()
-		.antMatchers("/registration").permitAll()
-		.antMatchers("/dashboard/**").hasAuthority("USER")
+		.antMatchers("/app").permitAll()
+		.antMatchers("/app/login").permitAll()
+		.antMatchers("/app/register").permitAll()		
+		.antMatchers("/app/contact").permitAll()
+		.antMatchers("/app/about").permitAll()
+		.antMatchers("/app/dashboard/**").hasAuthority("USER")
 		.anyRequest()
 		.authenticated()
 		.and().csrf().disable()
 		.formLogin()
-		.loginPage("/login")
-		.loginPage("/")
-		.failureUrl("/login?error=true")
-		.defaultSuccessUrl("/dashboard")
+		.loginPage("/app/login")
+		.loginPage("/app")
+		.failureUrl("/app/login?error=true")
+		.defaultSuccessUrl("/app/dashboard")
 		.usernameParameter("username")
 		.passwordParameter("password")
 		.and().logout()
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		.logoutSuccessUrl("/login").and().exceptionHandling();
+		.logoutRequestMatcher(new AntPathRequestMatcher("/app/logout"))
+		.logoutSuccessUrl("/app/login").and().exceptionHandling();
 	}
 
 	@Override

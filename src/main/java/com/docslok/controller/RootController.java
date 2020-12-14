@@ -29,12 +29,22 @@ public class RootController {
        return "login";
    }
    
-   @RequestMapping("/registration")
+   @RequestMapping("/register")
    public String nex2t() {
        return "registration";
    }
+   
+   @RequestMapping("/about")
+   public String about() {
+       return "about";
+   }
+   
+   @RequestMapping("/contact")
+   public String contact() {
+       return "contact";
+   }
 
-   @RequestMapping(value="/registration",method=RequestMethod.POST)
+   @RequestMapping(value="/register",method=RequestMethod.POST)
    public String createNewUser(@Valid User user, BindingResult bindingResult) {
        User userExists = userService.findUserByUserName(user.getUsername());
        if (userExists != null) {

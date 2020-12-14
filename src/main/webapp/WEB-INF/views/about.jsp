@@ -233,21 +233,20 @@ color:white;
     </ul>
   </div>
 
-	<div id="login-parent" class="col-6 col-s-9">
-		<h1 class="login-parent">Login to docslok</h1><br/>
 
-		<div>
-			<form action="/app/login" method="POST">
-				<input id="input" type="text" id="username" name="username"
-					placeholder="Username" /> <br /> <input id="input" type="password"
-					placeholder="Password" id="password" name="password" /> <br />
-				<button class="login-button" name="Login" type="Submit">Login</button>
-			</form>
-		</div>
-
-	</div>
-
-  
+  <div id="about-dockslok-parent" class="col-6 col-s-9">
+    <h1 id="about-docslok">About docslok</h1><br/>
+    <p id="about-docslok">
+   	docslok is a web application that lets user to create an account and then start using it in securing your documents online so
+   	that you can access that from anywhere anytime along with right kind of security that keeps the confidentiality of your 
+   	documents.<br/><br/>
+   	
+   	It also enables users to share their documents with other authorised users on the docslok app by keeping the security as the
+   	first priority while sharing and exchanging the documents.<br/><br/>
+   	
+   	It's completely free to setup a free account on docslok app
+    </p>
+  </div>
   <div class="col-3 col-s-12">
 			<div class="aside">
 				<img width="88%"
@@ -255,7 +254,10 @@ color:white;
 			</div>
 		</div>
 	</div>
+  
+  
 </div>
+
 
 		<div class="footer" id="f1">
   			<h1>docslok</h1>
@@ -263,4 +265,5 @@ color:white;
 		</div>
 </body>
 </html>
+
 

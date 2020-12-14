@@ -233,21 +233,13 @@ color:white;
     </ul>
   </div>
 
-	<div id="login-parent" class="col-6 col-s-9">
-		<h1 class="login-parent">Login to docslok</h1><br/>
 
-		<div>
-			<form action="/app/login" method="POST">
-				<input id="input" type="text" id="username" name="username"
-					placeholder="Username" /> <br /> <input id="input" type="password"
-					placeholder="Password" id="password" name="password" /> <br />
-				<button class="login-button" name="Login" type="Submit">Login</button>
-			</form>
-		</div>
-
-	</div>
-
-  
+  <div id="about-dockslok-parent" class="col-6 col-s-9">
+    <h1 id="about-docslok">Contact docslok</h1><br/>
+    <p id="about-docslok">
+    Drop an email at rohitkumar1121.rk@gmail.com</p>
+    </p>
+  </div>
   <div class="col-3 col-s-12">
 			<div class="aside">
 				<img width="88%"
@@ -255,7 +247,10 @@ color:white;
 			</div>
 		</div>
 	</div>
+  
+  
 </div>
+
 
 		<div class="footer" id="f1">
   			<h1>docslok</h1>
@@ -263,4 +258,5 @@ color:white;
 		</div>
 </body>
 </html>
+
 
