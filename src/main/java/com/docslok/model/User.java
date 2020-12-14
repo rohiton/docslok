@@ -7,46 +7,46 @@ import java.util.Set;
 @Table(name = "USERS")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID")
-    private Integer user_id;
-    
-    @Column(name = "USERNAME",unique=true)
-    private String username;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "USER_ID")
+	private Integer user_id;
 
-    @Column(name = "EMAIL",unique=true)
-    private String email;
+	@Column(name = "USERNAME", unique = true)
+	private String username;
 
-    @Column(name = "PASSWORD")
-    private String password;
+	@Column(name = "EMAIL", unique = true)
+	private String email;
 
-    @Column(name = "FIRSTNAME")
-    private String firstname;
+	@Column(name = "PASSWORD")
+	private String password;
 
-    @Column(name = "LASTNAME")
-    private String lastname;
-    
-    @Column(name = "AADHAAR_NO")
-    private int aadhaar_no;
-    
-    @Column(name = "ACTIVE")
-    private Boolean active;
-    
-    @Column(name = "EMAIL_VERIFIED")
-    private Boolean email_verified;
-    
-    public enum AccountStatus{
-    	ACTIVE, SUSPENDED, DROPPED
-    }
+	@Column(name = "FIRSTNAME")
+	private String firstname;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ACCOUNT_STATUS")
-    private AccountStatus account_status;
+	@Column(name = "LASTNAME")
+	private String lastname;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
-    private Set<Role> roles;
+	@Column(name = "AADHAAR_NO")
+	private int aadhaar_no;
+
+	@Column(name = "ACTIVE")
+	private boolean active;
+
+	@Column(name = "EMAIL_VERIFIED")
+	private boolean email_verified;
+
+	public enum AccountStatus {
+		ACTIVE, SUSPENDED, DROPPED
+	}
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "ACCOUNT_STATUS")
+	private AccountStatus account_status;
+
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+	private Set<Role> roles;
 
 	public Integer getUser_id() {
 		return user_id;

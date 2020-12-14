@@ -15,34 +15,32 @@ import java.util.HashSet;
 @Service
 public class UserService {
 
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+	private UserRepository userRepository;
+	private RoleRepository roleRepository;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Autowired
-    public UserService(UserRepository userRepository,
-                       RoleRepository roleRepository,
-                       BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+	@Autowired
+	public UserService(UserRepository userRepository, RoleRepository roleRepository,
+			BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.userRepository = userRepository;
+		this.roleRepository = roleRepository;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
 
-    public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
+	public User findUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
 
-    public User findUserByUserName(String userName) {
-        return userRepository.findByUsername(userName);
-    }
+	public User findUserByUserName(String userName) {
+		return userRepository.findByUsername(userName);
+	}
 
-    public User saveUser(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setAccount_status(AccountStatus.ACTIVE);
-        user.setEmail_verified(false);
-        user.setActive(true);
-        Role userRole = roleRepository.findByRole("USER");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-        return userRepository.save(user);
-    }
+	public User saveUser(User user) {
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		user.setAccount_status(AccountStatus.ACTIVE);
+		user.setActive(true);
+		Role userRole = roleRepository.findByRole("USER");
+		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		return userRepository.save(user);
+	}
 }

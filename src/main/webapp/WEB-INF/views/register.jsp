@@ -5,8 +5,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/index.css">
-<title>docslok</title>
+<link rel="stylesheet" href="css/register.css">
+<title>Register on docslok</title>
 </head>
 <body>
 	<div class="header">
@@ -32,23 +32,40 @@
 			</ul>
 		</div>
 
-		<div id="center-div-parent" class="col-6 col-s-9">
-			<h1 id="center-div-child">How we're securing your documents?</h1>
+		<div id="center-registration" class="col-6 col-s-9">
+			<h1 class="center-registration">Register on docslok</h1>
 			<br />
-			<p id="center-div-child">
-				Your documents safety is our first priority and hence with docslok
-				you can secure your confidential information in form of documents in
-				the most easiest and safest way. All your documents are in highly
-				encrypted form that keeps them safe while sharing them with
-				authorized users.<br />
-				<br /> The documents which you uploaded on docslok are immediately
-				gets encrypted as soon as you upload them and only the authorized
-				user having access to the keys will be able to access them. Also we
-				provide the option to add a another layer of security to your
-				documents by enabling password protected documents.<br />
-				<br /> Read more about the encryption process and our work under <a
-					href="/app/about">about</a> section.
-			</p>
+			<div>
+				<div>
+					<div>
+						<form action="/app/register" method="post">
+							<div>
+								<input id="input" type="text" name="firstname"
+									placeholder="Firstname" /> <input id="input" type="text"
+									name="lastname" placeholder="Lastname" />
+							</div>
+							<div>
+								<input id="input" type="email" name="email" placeholder="Email" />
+								<input id="input" type="text" name="username"
+									placeholder="Username" />
+							</div>
+							<div>
+								<input id="input" type="password" name="password"
+									placeholder="Password" />
+								<p>
+									<input id="accept-checkbox" type="checkbox" name="accept-checkbox" />I want to create an account
+								</p>
+							</div>
+
+							<div>
+								<button id="registration-button" class="registration-button"
+									name="Register" type="Submit">Register</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 		<div class="col-3 col-s-12">

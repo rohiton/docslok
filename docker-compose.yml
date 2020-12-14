@@ -1,0 +1,19 @@
+version: '3'
+services:
+    employeecare:
+        container_name: docslok
+        image: 100598/docslok:1.0
+        ports: 
+        - 8090:8090
+    mysql:
+        container_name: docslok-db
+        image: mysql:5.7
+        environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_USER=jeff
+        - MYSQL_PASSWORD=1234
+        - MYSQL_DATABASE=docslok
+        volumes:
+        - appvolume:/var/lib/mysql
+volumes:
+    appvolume:  

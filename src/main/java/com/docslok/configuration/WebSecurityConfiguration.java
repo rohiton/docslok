@@ -23,42 +23,25 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-		.userDetailsService(userDetailsService)
-		.passwordEncoder(bCryptPasswordEncoder);
+		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.
-		authorizeRequests()
-		.antMatchers("/app").permitAll()
-		.antMatchers("/app/login").permitAll()
-		.antMatchers("/app/register").permitAll()		
-		.antMatchers("/app/contact").permitAll()
-		.antMatchers("/app/about").permitAll()
-		.antMatchers("/app/dashboard/**").hasAuthority("USER")
-		.anyRequest()
-		.authenticated()
-		.and().csrf().disable()
-		.formLogin()
-		.loginPage("/app/login")
-		.loginPage("/app")
-		.failureUrl("/app/login?error=true")
-		.defaultSuccessUrl("/app/dashboard")
-		.usernameParameter("username")
-		.passwordParameter("password")
-		.and().logout()
-		.logoutRequestMatcher(new AntPathRequestMatcher("/app/logout"))
-		.logoutSuccessUrl("/app/login").and().exceptionHandling();
+		http.authorizeRequests().antMatchers("/**").permitAll().antMatchers("/login").permitAll()
+				.antMatchers("/register").permitAll().antMatchers("/contact").permitAll().antMatchers("/about")
+				.permitAll().antMatchers("/dashboard/**").hasAuthority("USER").antMatchers("/confirm-account/**")
+				.hasAuthority("USER").anyRequest().authenticated().and().csrf().disable().formLogin()
+				.loginPage("/login").loginPage("/").failureUrl("/login?error=true").defaultSuccessUrl("/dashboard")
+				.usernameParameter("username").passwordParameter("password").and().logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").and()
+				.exceptionHandling();
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web
-		.ignoring()
-		.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
 	}
 
 }
