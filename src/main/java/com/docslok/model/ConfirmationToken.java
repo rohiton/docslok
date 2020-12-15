@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "EMAILCONFIRMATION")
+@Table(name = "EMAIL_CONFIRMATION")
 public class ConfirmationToken {
 
 	@Id
@@ -27,9 +27,9 @@ public class ConfirmationToken {
 	@Column(name = "CONFIRMATION_TOKEN")
 	private String confirmationToken;
 
-	@Column(name = "CREATED_DATE")
+	@Column(name = "CREATION_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdDate;
+	private Date creationDate;
 
 	@OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false, name = "USER_ID")
@@ -41,7 +41,7 @@ public class ConfirmationToken {
 
 	public ConfirmationToken(User user) {
 		this.user = user;
-		createdDate = new Date();
+		creationDate = new Date();
 		confirmationToken = UUID.randomUUID().toString();
 	}
 
@@ -62,11 +62,11 @@ public class ConfirmationToken {
 	}
 
 	public Date getCreatedDate() {
-		return createdDate;
+		return creationDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatedDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public User getUser() {
@@ -76,5 +76,4 @@ public class ConfirmationToken {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 }

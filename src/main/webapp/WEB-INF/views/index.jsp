@@ -16,9 +16,9 @@
 		<div class="header-links">
 			<a href="/app">Home</a> 
 			<a href="/app/login">Login</a> 
-			<a href="/app/register">Register</a> 
-			<a href="/app/about">About</a> 
-			<a href="/app/contact">Contact</a>
+			<a href="/app/registration">Register</a> 
+			<a href="/app/about-docslok">About</a> 
+			<a href="/app/contact-docslok">Contact</a>
 		</div>
 	</div>
 
@@ -47,7 +47,7 @@
 				provide the option to add a another layer of security to your
 				documents by enabling password protected documents.<br />
 				<br /> Read more about the encryption process and our work under <a
-					href="/app/about">about</a> section.
+					href="/app/about-docslok">about</a> section.
 			</p>
 		</div>
 

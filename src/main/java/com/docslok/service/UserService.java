@@ -31,13 +31,13 @@ public class UserService {
 		return userRepository.findByEmail(email);
 	}
 
-	public User findUserByUserName(String userName) {
-		return userRepository.findByUsername(userName);
+	public User findUserByUserName(String username) {
+		return userRepository.findByUsername(username);
 	}
 
 	public User saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setAccount_status(AccountStatus.ACTIVE);
+		user.setAccountStatus(AccountStatus.ACTIVE);
 		user.setActive(true);
 		Role userRole = roleRepository.findByRole("USER");
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));

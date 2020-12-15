@@ -10,7 +10,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "USER_ID")
-	private Integer user_id;
+	private Integer userId;
 
 	@Column(name = "USERNAME", unique = true)
 	private String username;
@@ -21,23 +21,23 @@ public class User {
 	@Column(name = "PASSWORD")
 	private String password;
 
-	@Column(name = "FIRSTNAME")
-	private String firstname;
+	@Column(name = "FIRST_NAME")
+	private String firstName;
 
-	@Column(name = "LASTNAME")
-	private String lastname;
+	@Column(name = "LAST_NAME")
+	private String lastName;
 
 	@Column(name = "AADHAAR_NO")
-	private String aadhaar_no;
+	private Integer aadhaarNo;
 	
 	@Column(name = "SECRET_PIN")
-	private String secret_pin;
+	private Integer secretPin;
 
-	@Column(name = "ACTIVE")
-	private boolean active;
+	@Column(name = "IS_ACTIVE")
+	private boolean isActive;
 
-	@Column(name = "EMAIL_VERIFIED")
-	private boolean email_verified;
+	@Column(name = "IS_EMAIL_VERIFIED")
+	private boolean isEmailVerified;
 
 	public enum AccountStatus {
 		ACTIVE, SUSPENDED, DROPPED
@@ -45,18 +45,18 @@ public class User {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ACCOUNT_STATUS")
-	private AccountStatus account_status;
+	private AccountStatus accountStatus;
 
 	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
 	private Set<Role> roles;
 
-	public Integer getUser_id() {
-		return user_id;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public String getUsername() {
@@ -83,60 +83,60 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getAadhaar_no() {
-		return aadhaar_no;
+	public Integer getAadhaarNo() {
+		return aadhaarNo;
 	}
 
-	public void setAadhaar_no(String aadhaar_no) {
-		this.aadhaar_no = aadhaar_no;
+	public void setAadhaarNo(Integer aadhaarNo) {
+		this.aadhaarNo = aadhaarNo;
 	}
 
-	public String getSecret_pin() {
-		return secret_pin;
+	public Integer getSecretPin() {
+		return secretPin;
 	}
 
-	public void setSecret_pin(String secret_pin) {
-		this.secret_pin = secret_pin;
+	public void setSecretPin(Integer secretPin) {
+		this.secretPin = secretPin;
 	}
 
 	public boolean isActive() {
-		return active;
+		return isActive;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 
-	public boolean isEmail_verified() {
-		return email_verified;
+	public boolean isEmailVerified() {
+		return isEmailVerified;
 	}
 
-	public void setEmail_verified(boolean email_verified) {
-		this.email_verified = email_verified;
+	public void setEmailVerified(boolean isEmailVerified) {
+		this.isEmailVerified = isEmailVerified;
 	}
 
-	public AccountStatus getAccount_status() {
-		return account_status;
+	public AccountStatus getAccountStatus() {
+		return accountStatus;
 	}
 
-	public void setAccount_status(AccountStatus account_status) {
-		this.account_status = account_status;
+	public void setAccountStatus(AccountStatus accountStatus) {
+		this.accountStatus = accountStatus;
 	}
 
 	public Set<Role> getRoles() {
@@ -146,6 +146,4 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
-	
 }

@@ -17,9 +17,9 @@
 		<div class="header-links">
 			<a href="/app">Home</a> 
 			<a href="/app/login">Login</a> 
-			<a href="/app/register">Register</a> 
-			<a href="/app/about">About</a> 
-			<a href="/app/contact">Contact</a>
+			<a href="/app/registration">Register</a> 
+			<a href="/app/about-docslok">About</a> 
+			<a href="/app/contact-docslok">Contact</a>
 		</div>
 	</div>
 

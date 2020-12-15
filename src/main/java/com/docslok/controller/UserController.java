@@ -30,18 +30,20 @@ public class UserController {
 	@Autowired
 	private EmailSenderService emailSenderService;
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String createNewUser(@Valid User user, BindingResult bindingResult) {
-		User userExists = userService.findUserByUserName(user.getUsername());
-		if (userExists != null) {
-			return "register";
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	public String userRegistration(@Valid User user, BindingResult bindingResult) {
+		User existingUser = userService.findUserByUserName(user.getUsername());
+		if (existingUser != null) {
+			return "registrationErrorForExistingUser";
 		}
 		if (bindingResult.hasErrors()) {
-			return "register";
+			return "registrationError";
 		} else {
 			userService.saveUser(user);
 			ConfirmationToken confirmationToken = new ConfirmationToken(user);
 			confirmationTokenRepository.save(confirmationToken);
+			
+			//Sending email upon registration
 			SimpleMailMessage mailMessage = new SimpleMailMessage();
 			mailMessage.setTo(user.getEmail());
 			mailMessage.setSubject("Email Verification");
@@ -50,35 +52,36 @@ public class UserController {
 					+ "Before you can start using your docslok account, you need to first verify by clicking the below link: "
 					+ "http://localhost:8090/app/confirm-account?token=" + confirmationToken.getConfirmationToken());
 			emailSenderService.sendEmail(mailMessage);
-			return "docslok-user/post-registration";
+			
+			return "user/postRegistration";
 		}
 	}
 	
-	@RequestMapping(value = "/post-register", method = RequestMethod.POST)
-	public String postRegister(@Valid User user, BindingResult bindingResult) {
-			User u = userService.findUserByUserName(user.getUsername());
-			u.setAadhaar_no(user.getAadhaar_no());
-			u.setSecret_pin(user.getSecret_pin());
-			userService.save(u);
+	@RequestMapping(value = "/post-registration", method = RequestMethod.POST)
+	public String postRegistration(@Valid User user, BindingResult bindingResult) {
+			User newlyCreatedUser = userService.findUserByUserName(user.getUsername());
+			newlyCreatedUser.setAadhaarNo(user.getAadhaarNo());
+			newlyCreatedUser.setSecretPin(user.getSecretPin());
+			userService.save(newlyCreatedUser);
 			return "login";
 	}
 
-	@RequestMapping(value = "/confirm-account", method = { RequestMethod.GET, RequestMethod.POST })
-	public String emailVerification(@RequestParam("token") String confirmationToken) {
+	@RequestMapping(value = "/account-confirmation", method = { RequestMethod.GET, RequestMethod.POST })
+	public String accountConfirmation(@RequestParam("token") String confirmationToken) {
 		ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 		if (token != null) {
 			User user = userService.findUserByEmail(token.getUser().getEmail());
-			user.setEmail_verified(true);
+			user.setEmailVerified(true);
 			userService.saveUser(user);
-			return "docslok-user/email-verification-success";
+			return "user/emailVerificationSuccess";
 		} else {
-			return "docslok-user/email-verification-fail";
+			return "user/emailVerificationFail";
 		}
 	}
 
 	@RequestMapping(value = "/dashboard/email-verification", method = RequestMethod.GET)
-	public String verify(@Valid User u) {
-		User user = userService.findUserByUserName(u.getUsername());
+	public String emailVerification(@Valid User user) {
+		User newlyCreatedUser = userService.findUserByUserName(user.getUsername());
 		return "docslok-user/email-verification";
 	}
 
@@ -87,13 +90,13 @@ public class UserController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
 
-		if(user.getAadhaar_no()!=null && user.isEmail_verified()) {
+		if(user.getAadhaarNo()!=null && user.isEmailVerified()) {
 			return "docslok-user/dashboard";
 		}
-		else if(user.getAadhaar_no()!=null) {
-			if (!user.isEmail_verified()) 
-				return "docslok-user/unverified-dashboard";
-			return "docslok-user/dashboard";
+		else if(user.getAadhaarNo()!=null) {
+			if (!user.isEmailVerified()) 
+				return "user/unverifiedDashboard";
+			return "user/dashboard";
 		}
 		else {
 			return "login";

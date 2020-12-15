@@ -16,17 +16,17 @@ public class HomeController {
 		return "login";
 	}
 
-	@RequestMapping("/register")
-	public String registerPage() {
-		return "register";
+	@RequestMapping("/registration")
+	public String registrationPage() {
+		return "registration";
 	}
 
-	@RequestMapping("/about")
+	@RequestMapping("/about-docslok")
 	public String aboutPage() {
 		return "about";
 	}
 
-	@RequestMapping("/contact")
+	@RequestMapping("/contact-docslok")
 	public String contactPage() {
 		return "contact";
 	}
