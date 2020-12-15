@@ -50,8 +50,17 @@ public class UserController {
 					+ "Before you can start using your docslok account, you need to first verify by clicking the below link: "
 					+ "http://localhost:8090/app/confirm-account?token=" + confirmationToken.getConfirmationToken());
 			emailSenderService.sendEmail(mailMessage);
-			return "login";
+			return "docslok-user/post-registration";
 		}
+	}
+	
+	@RequestMapping(value = "/post-register", method = RequestMethod.POST)
+	public String postRegister(@Valid User user, BindingResult bindingResult) {
+			User u = userService.findUserByUserName(user.getUsername());
+			u.setAadhaar_no(user.getAadhaar_no());
+			u.setSecret_pin(user.getSecret_pin());
+			userService.save(u);
+			return "login";
 	}
 
 	@RequestMapping(value = "/confirm-account", method = { RequestMethod.GET, RequestMethod.POST })
@@ -63,7 +72,7 @@ public class UserController {
 			userService.saveUser(user);
 			return "docslok-user/email-verification-success";
 		} else {
-			return "email-verification-fail";
+			return "docslok-user/email-verification-fail";
 		}
 	}
 
@@ -77,10 +86,17 @@ public class UserController {
 	public String dashboard() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
-		if (user.getEmail_verified()) {
+
+		if(user.getAadhaar_no()!=null && user.isEmail_verified()) {
 			return "docslok-user/dashboard";
-		} else {
-			return "docslok-user/unverified-dashboard";
+		}
+		else if(user.getAadhaar_no()!=null) {
+			if (!user.isEmail_verified()) 
+				return "docslok-user/unverified-dashboard";
+			return "docslok-user/dashboard";
+		}
+		else {
+			return "login";
 		}
 	}
 }

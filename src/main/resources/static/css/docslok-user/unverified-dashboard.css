@@ -18,7 +18,7 @@ html {
 }
 
 .header h1 {
-	color: #5a3b82;
+	color: black;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 	font-size: 40px;
 	padding-left: 15px;
@@ -28,7 +28,7 @@ html {
 
 .header p {
 	font-family: 'Yanone Kaffeesatz', sans-serif;
-	color: #5a3b82;
+	color: black;
 	padding-left: 15px;
 	font-size: 22px;
 	font-weight: bold;
@@ -37,7 +37,7 @@ html {
 
 .header-links a {
 	font-family: 'Roboto Condensed', sans-serif;
-	color: #5a3b82;
+	color: black;
 	padding-left: 15px;
 	font-size: 18px;
 	font-weight: bold;
@@ -48,7 +48,7 @@ html {
 .login-button {
 	font-family: 'Roboto Condensed';
 	/* padding: 10px; */
-	background: #5a3b82;
+	background: black;
 	color: white;
 	font-weight: bold;
 	font-size: 18px;
@@ -86,18 +86,18 @@ html {
 	margin-bottom: 7px;
 	font-family: 'Roboto Condensed', sans-serif;
 	border-radius: 4px;
-	background-color: #5a3b82;
+	background-color: black;
 	color: #ffffff;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .menu li:hover {
-	background-color: #412961;
+	background-color: black;
 }
 
 #center-login {
 	margin-top: 16px;
-	color: #5a3b82;
+	color: black;
 }
 
 #alert {
@@ -106,12 +106,12 @@ html {
 
 h1 {
 	font-family: 'Roboto Condensed', sans-serif;
-	color: #5a3b82;
+	color: black;
 	font-size: 30px;
 }
 
 .right-div {
-	background-color: #5a3b82;
+	background-color: black;
 	padding: 15px;
 	color: #ffffff;
 	text-align: center;
@@ -128,7 +128,7 @@ h1 {
 }
 
 .footer a {
-	color: #5a3b82;
+	color: black;
 	text-decoration: none;
 	padding: 5px;
 	font-family: 'Roboto Condensed', sans-serif;
@@ -139,7 +139,7 @@ input {
 	font-size: 16px;
 	width: 251px;
 	height: 40px;
-	border: 3px solid #5a3b82;
+	border: 3px solid black;
 	padding: 5px;
 	font-family: 'Roboto Condensed', sans-serif;
 }
@@ -147,9 +147,9 @@ input {
 #verify-email-button {
 	padding: 10px;
 	text-decoration: none;
-	border: 3px solid #5a3b82;
+	border: 3px solid black;
 	margin-top: 10px;
-	color: #5a3b82;
+	color: black;
 	border-radius: 31px;
 	font-family: 'Roboto Condensed', sans-serif;
 }
@@ -157,16 +157,16 @@ input {
 #add-aadhaar-button {
 	padding: 5px;
 	text-decoration: none;
-	border: 3px solid #5a3b82;
+	border: 3px solid black;
 	margin-top: 10px;
 	height: 40px;
 	font-size: 16px;
 	font-family: 'Roboto Condensed', sans-serif;
-	color: #5a3b82;
+	color: black;
 }
 
 #add-aadhaar-button:hover {
-	background: #5a3b82;
+	background: black;
 	color: white;
 }
 

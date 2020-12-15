@@ -28,7 +28,10 @@ public class User {
 	private String lastname;
 
 	@Column(name = "AADHAAR_NO")
-	private int aadhaar_no;
+	private String aadhaar_no;
+	
+	@Column(name = "SECRET_PIN")
+	private String secret_pin;
 
 	@Column(name = "ACTIVE")
 	private boolean active;
@@ -96,27 +99,35 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	public int getAadhaar_no() {
+	public String getAadhaar_no() {
 		return aadhaar_no;
 	}
 
-	public void setAadhaar_no(int aadhaar_no) {
+	public void setAadhaar_no(String aadhaar_no) {
 		this.aadhaar_no = aadhaar_no;
 	}
 
-	public Boolean getActive() {
+	public String getSecret_pin() {
+		return secret_pin;
+	}
+
+	public void setSecret_pin(String secret_pin) {
+		this.secret_pin = secret_pin;
+	}
+
+	public boolean isActive() {
 		return active;
 	}
 
-	public void setActive(Boolean active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
-	public Boolean getEmail_verified() {
+	public boolean isEmail_verified() {
 		return email_verified;
 	}
 
-	public void setEmail_verified(Boolean email_verified) {
+	public void setEmail_verified(boolean email_verified) {
 		this.email_verified = email_verified;
 	}
 
@@ -135,4 +146,6 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
+	
 }

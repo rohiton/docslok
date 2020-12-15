@@ -33,7 +33,7 @@
 		</div>
 
 		<div id="center-div-parent" class="col-6 col-s-9">
-			<h1 id="center-div-child">About docslok</h1>
+			<h2 id="center-div-child">About docslok</h2>
 			<br />
 			<p id="center-div-child">
 				docslok is a web application that lets user to create an account and

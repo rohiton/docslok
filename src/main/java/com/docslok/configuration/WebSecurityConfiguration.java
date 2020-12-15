@@ -30,10 +30,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests().antMatchers("/**").permitAll().antMatchers("/login").permitAll()
-				.antMatchers("/register").permitAll().antMatchers("/contact").permitAll().antMatchers("/about")
+				.antMatchers("/register").permitAll().antMatchers("/post-register").permitAll().antMatchers("/contact").permitAll().antMatchers("/about")
 				.permitAll().antMatchers("/dashboard/**").hasAuthority("USER").antMatchers("/confirm-account/**")
 				.hasAuthority("USER").anyRequest().authenticated().and().csrf().disable().formLogin()
-				.loginPage("/login").loginPage("/").failureUrl("/login?error=true").defaultSuccessUrl("/dashboard")
+				.loginPage("/login").failureUrl("/login?error=true").defaultSuccessUrl("/dashboard")
 				.usernameParameter("username").passwordParameter("password").and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").and()
 				.exceptionHandling();

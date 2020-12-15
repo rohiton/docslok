@@ -33,7 +33,7 @@
 		</div>
 
 		<div id="center-div-parent" class="col-6 col-s-9">
-			<h1 id="center-div-child">How we're securing your documents?</h1>
+			<h2 id="center-div-child">How we're securing your documents?</h2>
 			<br />
 			<p id="center-div-child">
 				Your documents safety is our first priority and hence with docslok

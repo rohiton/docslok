@@ -34,7 +34,7 @@
 		</div>
 
 		<div id="center-login" class="col-6 col-s-9">
-			<h1 class="center-login">Login to docslok</h1>
+			<h2 class="center-login">Login to docslok</h2>
 			<br />
 			<div>
 				<form action="/app/login" method="POST">

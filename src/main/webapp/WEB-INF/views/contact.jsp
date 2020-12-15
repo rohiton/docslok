@@ -33,7 +33,7 @@
 		</div>
 
 		<div id="center-div-parent" class="col-6 col-s-9">
-			<h1 id="center-div-child">Contact docslok</h1>
+			<h2 id="center-div-child">Contact docslok</h2>
 			<br />
 			<p id="center-div-child">Drop an email at
 				rohitkumar1121.rk@gmail.com</p>
