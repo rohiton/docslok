@@ -7,6 +7,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/registration.css">
 <title>Register on docslok</title>
+<script>
+function validateForm() {
+	var checkbox = document.getElementById("accept-checkbox");
+	var firstName = document.getElementById("firstName").value;
+	var lastName = document.getElementById("lastName").value;
+	var email = document.getElementById("email").value;
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+
+	if (firstName == "") {
+	    alert("Firstname can't be empty");
+	    return false;
+	}
+	if (lastName == "") {
+	    alert("Lastname can't be empty");
+	    return false;
+	}
+	if (email == "") {
+	    alert("Email can't be empty");
+	    return false;
+	}
+	if (username == "") {
+	    alert("Username can't be empty");
+	    return false;
+	}
+	if (password == "") {
+	    alert("Password can't be empty");
+	    return false;
+	}
+
+	if(!checkbox.checked){
+		alert("Accept that you wanted to create an account");
+		return false;
+	}
+}
+</script>
 </head>
 <body>
 	<div class="header">
@@ -39,26 +75,26 @@
 			<div>
 				<div>
 					<div>
-						<form action="/app/registration" method="post">
+						<form action="/app/registration" method="post" onsubmit="return validateForm()">
 							<div>
-								<input id="input" type="text" name="firstName"
-									placeholder="Firstname" /> <input id="input" type="text"
+								<input id="firstName" minlength=3 maxlength=10 type="text" name="firstName"
+									placeholder="Firstname" /> <input minlength=3 maxlength=10 id="lastName" type="text"
 									name="lastName" placeholder="Lastname" />
 							</div>
 							<div>
-								<input id="input" type="email" name="email" placeholder="Email" />
-								<input id="input" type="text" name="username"
+								<input id="email" type="email" name="email" placeholder="Email" />
+								<input id="username" type="text" minlength=5 maxlength=10 name="username"
 									placeholder="Username" />
 							</div>
 							<div>
-								<input id="input" type="password" name="password"
+								<input id="password" minlength=6 maxlength=10 type="password" name="password"
 									placeholder="Password" />
 								<p><input id="accept-checkbox" type="checkbox" name="accept-checkbox" />I want to create an account</p>
 							</div>
 
 							<div>
-								<button id="registration-button" class="registration-button"
-									name="Register" type="Submit">Register</button>
+								<input id="registration-button" class="registration-button"
+									name="Register" value="Register" type="Submit" />
 							</div>
 						</form>
 					</div>

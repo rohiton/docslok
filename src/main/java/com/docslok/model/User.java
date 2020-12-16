@@ -28,7 +28,7 @@ public class User {
 	private String lastName;
 
 	@Column(name = "AADHAAR_NO")
-	private Integer aadhaarNo;
+	private Long aadhaarNo;
 	
 	@Column(name = "SECRET_PIN")
 	private Integer secretPin;
@@ -99,11 +99,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public Integer getAadhaarNo() {
+	public Long getAadhaarNo() {
 		return aadhaarNo;
 	}
 
-	public void setAadhaarNo(Integer aadhaarNo) {
+	public void setAadhaarNo(Long aadhaarNo) {
 		this.aadhaarNo = aadhaarNo;
 	}
 

@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.docslok.model.ConfirmationToken;
 import com.docslok.model.User;
@@ -31,13 +32,14 @@ public class UserController {
 	private EmailSenderService emailSenderService;
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String userRegistration(@Valid User user, BindingResult bindingResult) {
+	public ModelAndView userRegistration(@Valid User user, BindingResult bindingResult) {
+		ModelAndView  mav = new ModelAndView();
 		User existingUser = userService.findUserByUserName(user.getUsername());
 		if (existingUser != null) {
-			return "registrationErrorForExistingUser";
+			mav.setViewName("registrationErrorForExistingUser");
 		}
-		if (bindingResult.hasErrors()) {
-			return "registrationError";
+		else if (bindingResult.hasErrors()) {
+			mav.setViewName("registrationError");
 		} else {
 			userService.saveUser(user);
 			ConfirmationToken confirmationToken = new ConfirmationToken(user);
@@ -50,56 +52,59 @@ public class UserController {
 			mailMessage.setFrom("Adm.employeecare@gmail.com");
 			mailMessage.setText("Welcome to docslok!\n\n"
 					+ "Before you can start using your docslok account, you need to first verify by clicking the below link: "
-					+ "http://localhost:8090/app/confirm-account?token=" + confirmationToken.getConfirmationToken());
+					+ "http://localhost:8090/app/account-confirmation?token=" + confirmationToken.getConfirmationToken());
 			emailSenderService.sendEmail(mailMessage);
-			
-			return "user/postRegistration";
+			mav.setViewName("user/postRegistration");
 		}
+		return mav;
 	}
 	
 	@RequestMapping(value = "/post-registration", method = RequestMethod.POST)
-	public String postRegistration(@Valid User user, BindingResult bindingResult) {
+	public ModelAndView postRegistration(@Valid User user, BindingResult bindingResult) {
+		ModelAndView  mav = new ModelAndView("redirect:/login");
 			User newlyCreatedUser = userService.findUserByUserName(user.getUsername());
 			newlyCreatedUser.setAadhaarNo(user.getAadhaarNo());
 			newlyCreatedUser.setSecretPin(user.getSecretPin());
 			userService.save(newlyCreatedUser);
-			return "login";
+			return mav;
 	}
 
 	@RequestMapping(value = "/account-confirmation", method = { RequestMethod.GET, RequestMethod.POST })
-	public String accountConfirmation(@RequestParam("token") String confirmationToken) {
+	public ModelAndView accountConfirmation(@RequestParam("token") String confirmationToken) {
+		ModelAndView  mav = new ModelAndView();
 		ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 		if (token != null) {
 			User user = userService.findUserByEmail(token.getUser().getEmail());
 			user.setEmailVerified(true);
 			userService.saveUser(user);
-			return "user/emailVerificationSuccess";
+			mav.setViewName("user/emailVerificationSuccess");
 		} else {
-			return "user/emailVerificationFail";
+			mav.setViewName("user/emailVerificationFail");
 		}
+		return mav;
 	}
 
 	@RequestMapping(value = "/dashboard/email-verification", method = RequestMethod.GET)
-	public String emailVerification(@Valid User user) {
+	public ModelAndView emailVerification(@Valid User user) {
 		User newlyCreatedUser = userService.findUserByUserName(user.getUsername());
-		return "docslok-user/email-verification";
+		ModelAndView  mav = new ModelAndView("user/email-verification");
+		return mav;
 	}
 
 	@RequestMapping(value = "/dashboard")
-	public String dashboard() {
+	public ModelAndView dashboard() {
+		ModelAndView  mav = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
-
-		if(user.getAadhaarNo()!=null && user.isEmailVerified()) {
-			return "docslok-user/dashboard";
+		if(!user.isEmailVerified()) {
+			mav.addObject("emailNotVerifiedMessage", "Before you can start securing documents, you need to first verify your email address, please check your inbox.");
 		}
-		else if(user.getAadhaarNo()!=null) {
-			if (!user.isEmailVerified()) 
-				return "user/unverifiedDashboard";
-			return "user/dashboard";
+		if(user.getAadhaarNo()==null || user.getSecretPin()==null){
+			mav.setViewName("user/postRegistration");
+			return mav;
 		}
-		else {
-			return "login";
-		}
+		mav.addObject("message", "Thank you for creating an account on docslok. You can now start securing your documents with us.");
+		mav.setViewName("user/dashboard");
+		return mav;
 	}
 }

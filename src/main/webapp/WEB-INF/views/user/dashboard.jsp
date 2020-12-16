@@ -15,14 +15,14 @@
 		<p>Securing your documents</p>
 
 		<div class="header-links">
-			<a href="/app/dashboard">Dashboard</a> 
 			<a href="/app/logout">Logout</a>
 		</div>
 	</div>
 
 	<div id="center-login" class="col-6 col-s-9">
 		<h1 class="center-login">Welcome to docslok</h1>
-		<p id="alert">All good</p>
+		<p id="email-not-verified-message">${emailNotVerifiedMessage}</p>
+		<p id="alert">${message}</p>
 	</div>
 </body>
 </html>

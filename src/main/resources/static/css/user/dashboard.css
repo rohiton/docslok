@@ -110,6 +110,18 @@ h1 {
 	font-size: 30px;
 }
 
+p {
+	font-family: 'Roboto Condensed', sans-serif;
+	color: black;
+	font-size: 18px;
+}
+
+#email-not-verified-message{
+	background-color:#ededed;
+	padding:10px;
+	border-radius:5px;
+	border:none;
+}
 .right-div {
 	background-color: black;
 	padding: 15px;

@@ -7,6 +7,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/postRegistration.css">
 <title>Register on docslok</title>
+<script>
+function validateForm() {
+	var username = document.getElementById("username").value;
+	var aadhaarNo = document.getElementById("aadhaarNo").value;
+	var secretPin = document.getElementById("secretPin").value;
+
+	if (username == "") {
+	    alert("Username can't be empty");
+	    return false;
+	}
+	if (aadhaarNo == "") {
+	    alert("Aadhaar number can't be empty");
+	    return false;
+	}
+	if (aadhaarNo.length!=12){
+	    alert("Aadhaar number should be of 12 digits only");
+	    return false;	
+	}
+	if (secretPin == "") {
+	    alert("Secret pin can't be empty");
+	    return false;
+	}
+	if(secretPin.length!=6){
+	    alert("Secret pin should be of 6 digits only");
+	    return false;
+	}
+}
+</script>
 </head>
 <body>
 	<div class="header">
@@ -32,19 +60,19 @@
 			<div>
 				<div>
 					<div>
-						<form action="/app/post-registration" method="post">
+						<form action="/app/post-registration" method="post" onsubmit="return validateForm()">
 							<div>
-							<input id="input" type="text" name="username"
+							<input id="username" type="text" minlength="6" maxlength="10" name="username"
 									placeholder="Username" /> 
-								<input id="input" type="text" name="aadhaarNo"
+								<input id="aadhaarNo" type="number" name="aadhaarNo"
 									placeholder="Aadhaar Number" /> 
 							</div>
 							<div>
-								<input id="input" type="text" name="secretPin" placeholder="6 Digit Secret Pin" />
+								<input id="secretPin" type="number" name="secretPin" placeholder="6 Digit Secret Pin" />
 							</div>
 							<div>
 								<button id="registration-button" class="registration-button"
-									name="Register" type="Submit">Create Account</button>
+									name="Register" type="Submit">Update My Account</button>
 							</div>
 						</form>
 					</div>
