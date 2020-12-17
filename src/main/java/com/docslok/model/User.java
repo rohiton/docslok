@@ -12,10 +12,10 @@ public class User {
 	@Column(name = "USER_ID")
 	private Integer userId;
 
-	@Column(name = "USERNAME", unique = true)
+	@Column(name = "USERNAME",length=128, unique = true)
 	private String username;
 
-	@Column(name = "EMAIL", unique = true)
+	@Column(name = "EMAIL",length=128, unique = true)
 	private String email;
 
 	@Column(name = "PASSWORD")
@@ -27,7 +27,7 @@ public class User {
 	@Column(name = "LAST_NAME")
 	private String lastName;
 
-	@Column(name = "AADHAAR_NO")
+	@Column(name = "AADHAAR_NO", length=128, unique = true)
 	private Long aadhaarNo;
 	
 	@Column(name = "SECRET_PIN")

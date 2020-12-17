@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +22,15 @@
 
 	<div id="center-login" class="col-6 col-s-9">
 		<h1 class="center-login">Welcome to docslok</h1>
-		<p id="email-not-verified-message">${emailNotVerifiedMessage}</p>
 		<p id="alert">${message}</p>
+		
+		<c:if test="${not empty emailNotVerifiedMessage}">
+    		<p id="email-not-verified-message">${emailNotVerifiedMessage}</p>
+		</c:if>
+		<c:if test="${not empty aadhaarNotUpdated}">
+    		<p id="email-not-verified-message">${aadhaarNotUpdated}</p><p id="alert">Click <a href="/app/post-registration">here</a> to update AADHAAR number</p>
+		</c:if>
+		
 	</div>
 </body>
 </html>

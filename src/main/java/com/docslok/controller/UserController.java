@@ -35,11 +35,18 @@ public class UserController {
 	public ModelAndView userRegistration(@Valid User user, BindingResult bindingResult) {
 		ModelAndView  mav = new ModelAndView();
 		User existingUser = userService.findUserByUserName(user.getUsername());
+		User existingUserByEmail = userService.findUserByEmail(user.getEmail());
 		if (existingUser != null) {
-			mav.setViewName("registrationErrorForExistingUser");
+			mav.setViewName("registration");
+			return mav;
+		}
+		if (existingUserByEmail != null) {
+			mav.setViewName("registration");
+			return mav;
 		}
 		else if (bindingResult.hasErrors()) {
-			mav.setViewName("registrationError");
+			mav.setViewName("registration");
+			return mav;
 		} else {
 			userService.saveUser(user);
 			ConfirmationToken confirmationToken = new ConfirmationToken(user);
@@ -76,7 +83,7 @@ public class UserController {
 		if (token != null) {
 			User user = userService.findUserByEmail(token.getUser().getEmail());
 			user.setEmailVerified(true);
-			userService.saveUser(user);
+			userService.save(user);
 			mav.setViewName("user/emailVerificationSuccess");
 		} else {
 			mav.setViewName("user/emailVerificationFail");
@@ -93,18 +100,16 @@ public class UserController {
 
 	@RequestMapping(value = "/dashboard")
 	public ModelAndView dashboard() {
-		ModelAndView  mav = new ModelAndView();
+		ModelAndView  mav = new ModelAndView("user/dashboard");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
 		if(!user.isEmailVerified()) {
 			mav.addObject("emailNotVerifiedMessage", "Before you can start securing documents, you need to first verify your email address, please check your inbox.");
 		}
 		if(user.getAadhaarNo()==null || user.getSecretPin()==null){
-			mav.setViewName("user/postRegistration");
-			return mav;
+			mav.addObject("aadhaarNotUpdated", "Looks like you've not updated your AADHAAR number in your account. Kindly update it else you won't be able to secure your documents");
 		}
 		mav.addObject("message", "Thank you for creating an account on docslok. You can now start securing your documents with us.");
-		mav.setViewName("user/dashboard");
 		return mav;
 	}
 }

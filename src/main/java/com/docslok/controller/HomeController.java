@@ -24,6 +24,12 @@ public class HomeController {
 		ModelAndView  mav = new ModelAndView("registration");
 		return mav;
 	}
+	
+	@RequestMapping("/post-registration")
+	public ModelAndView postRegistrationPage() {
+		ModelAndView  mav = new ModelAndView("user/postRegistration");
+		return mav;
+	}
 
 	@RequestMapping("/about-docslok")
 	public ModelAndView aboutPage() {

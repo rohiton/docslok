@@ -41,7 +41,10 @@ function validateForm() {
 		<h1>docslok</h1>
 		<p>Securing your documents</p>
 	</div>
-
+		<div class="header-links">
+			<a href="/app">Home</a>
+	</div>
+		
 	<div class="row">
 		<div class="col-3 col-s-3 menu">
 			<ul>

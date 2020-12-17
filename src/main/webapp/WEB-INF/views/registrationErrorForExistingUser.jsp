@@ -6,7 +6,7 @@
 <script>
 function registrationErrorAlert(){
 	alert("User already exist")
-	window.location = "/registration";
+	window.location.replace("/app/registration");
 }
 </script>
 <title>Registration Failed</title>
