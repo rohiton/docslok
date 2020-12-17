@@ -83,10 +83,13 @@ function validateForm() {
 			</div>
 
 		</div>
-		<div class="col-3 col-s-12">
-			<div class="right-div">
-				<img width="88%" src="images/image.jpg">
-			</div>
+		<div class="col-3 col-s-3 menu">
+			<ul>
+				<li>Free Storage upto 10MB</li>
+				<li>Security Alerts</li>
+				<li>Access from anywhere</li>
+				<li>Document Conversion</li>
+			</ul>
 		</div>
 	</div>
 

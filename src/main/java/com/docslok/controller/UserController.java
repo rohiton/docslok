@@ -33,14 +33,11 @@ public class UserController {
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView userRegistration(@Valid User user, BindingResult bindingResult) {
-		ModelAndView  mav = new ModelAndView();
-		User existingUser = userService.findUserByUserName(user.getUsername());
+		ModelAndView mav = new ModelAndView();
+		User existingUserByUysername = userService.findUserByUserName(user.getUsername());
 		User existingUserByEmail = userService.findUserByEmail(user.getEmail());
-		if (existingUser != null) {
-			mav.setViewName("registration");
-			return mav;
-		}
-		if (existingUserByEmail != null) {
+		//If a user already existed with the entered username or email
+		if (existingUserByUysername != null || existingUserByEmail != null) {
 			mav.setViewName("registration");
 			return mav;
 		}
@@ -48,37 +45,39 @@ public class UserController {
 			mav.setViewName("registration");
 			return mav;
 		} else {
-			userService.saveUser(user);
+			userService.saveAsNewUser(user);
 			ConfirmationToken confirmationToken = new ConfirmationToken(user);
 			confirmationTokenRepository.save(confirmationToken);
-			
-			//Sending email upon registration
+			// Sending email upon registration
 			SimpleMailMessage mailMessage = new SimpleMailMessage();
 			mailMessage.setTo(user.getEmail());
 			mailMessage.setSubject("Email Verification");
 			mailMessage.setFrom("Adm.employeecare@gmail.com");
 			mailMessage.setText("Welcome to docslok!\n\n"
 					+ "Before you can start using your docslok account, you need to first verify by clicking the below link: "
-					+ "http://localhost:8090/app/account-confirmation?token=" + confirmationToken.getConfirmationToken());
+					+ "http://localhost:8090/app/account-confirmation?token="
+					+ confirmationToken.getConfirmationToken());
 			emailSenderService.sendEmail(mailMessage);
 			mav.setViewName("user/postRegistration");
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/post-registration", method = RequestMethod.POST)
 	public ModelAndView postRegistration(@Valid User user, BindingResult bindingResult) {
-		ModelAndView  mav = new ModelAndView("redirect:/login");
-			User newlyCreatedUser = userService.findUserByUserName(user.getUsername());
+		ModelAndView mav = new ModelAndView("redirect:/login");
+		User newlyCreatedUser = userService.findUserByUserName(user.getUsername());
+		if(newlyCreatedUser!=null) {
 			newlyCreatedUser.setAadhaarNo(user.getAadhaarNo());
 			newlyCreatedUser.setSecretPin(user.getSecretPin());
 			userService.save(newlyCreatedUser);
-			return mav;
+		}
+		return mav;
 	}
 
 	@RequestMapping(value = "/account-confirmation", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView accountConfirmation(@RequestParam("token") String confirmationToken) {
-		ModelAndView  mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 		ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 		if (token != null) {
 			User user = userService.findUserByEmail(token.getUser().getEmail());
@@ -91,25 +90,21 @@ public class UserController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/dashboard/email-verification", method = RequestMethod.GET)
-	public ModelAndView emailVerification(@Valid User user) {
-		User newlyCreatedUser = userService.findUserByUserName(user.getUsername());
-		ModelAndView  mav = new ModelAndView("user/email-verification");
-		return mav;
-	}
-
 	@RequestMapping(value = "/dashboard")
 	public ModelAndView dashboard() {
-		ModelAndView  mav = new ModelAndView("user/dashboard");
+		ModelAndView mav = new ModelAndView("user/dashboard");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
-		if(!user.isEmailVerified()) {
-			mav.addObject("emailNotVerifiedMessage", "Before you can start securing documents, you need to first verify your email address, please check your inbox.");
+		if (!user.isEmailVerified()) {
+			mav.addObject("emailNotVerifiedMessage",
+					"Before you can start securing documents, you need to first verify your email address, please check your inbox.");
 		}
-		if(user.getAadhaarNo()==null || user.getSecretPin()==null){
-			mav.addObject("aadhaarNotUpdated", "Looks like you've not updated your AADHAAR number in your account. Kindly update it else you won't be able to secure your documents");
+		if (user.getAadhaarNo() == null || user.getSecretPin() == null) {
+			mav.addObject("aadhaarNotUpdated",
+					"Looks like you've not updated your AADHAAR number in your account. Kindly update it else you won't be able to secure your documents");
 		}
-		mav.addObject("message", "Thank you for creating an account on docslok. You can now start securing your documents with us.");
+		mav.addObject("message",
+				"Thank you for creating an account on docslok. You can now start securing your documents with us.");
 		return mav;
 	}
 }

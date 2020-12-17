@@ -33,15 +33,18 @@
 		</div>
 
 		<div id="center-div-parent" class="col-6 col-s-9">
-			<h2 id="center-div-child">Contact docslok</h2>
+			<h2 id="center-div-child-header">Contact docslok</h2>
 			<br />
-			<p id="center-div-child">Drop an email at
+			<p id="center-div-child-para">Drop an email at
 				rohitkumar1121.rk@gmail.com</p>
 		</div>
-		<div class="col-3 col-s-12">
-			<div class="right-div">
-				<img width="88%" src="images/image.jpg">
-			</div>
+		<div class="col-3 col-s-3 menu">
+			<ul>
+				<li>Free Storage upto 10MB</li>
+				<li>Security Alerts</li>
+				<li>Access from anywhere</li>
+				<li>Document Conversion</li>
+			</ul>
 		</div>
 	</div>
 

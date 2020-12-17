@@ -33,9 +33,9 @@
 		</div>
 
 		<div id="center-div-parent" class="col-6 col-s-9">
-			<h2 id="center-div-child">About docslok</h2>
+			<h2 id="center-div-child-header">About docslok</h2>
 			<br />
-			<p id="center-div-child">
+			<p id="center-div-child-para">
 				docslok is a web application that lets user to create an account and
 				then start using it in securing your documents online so that you
 				can access that from anywhere any time along with right kind of
@@ -47,10 +47,13 @@
 			</p>
 		</div>
 		
-		<div class="col-3 col-s-12">
-			<div class="right-div">
-				<img width="88%" src="images/image.jpg">
-			</div>
+		<div class="col-3 col-s-3 menu">
+			<ul>
+				<li>Free Storage upto 10MB</li>
+				<li>Security Alerts</li>
+				<li>Access from anywhere</li>
+				<li>Document Conversion</li>
+			</ul>
 		</div>
 	</div>
 

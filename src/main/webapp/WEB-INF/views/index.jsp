@@ -33,9 +33,9 @@
 		</div>
 
 		<div id="center-div-parent" class="col-6 col-s-9">
-			<h2 id="center-div-child">How we're securing your documents?</h2>
+			<h2 id="center-div-child-header">How we're securing your documents?</h2>
 			<br />
-			<p id="center-div-child">
+			<p id="center-div-child-para">
 				Your documents safety is our first priority and hence with docslok
 				you can secure your confidential information in form of documents in
 				the most easiest and safest way. All your documents are in highly
@@ -51,10 +51,13 @@
 			</p>
 		</div>
 
-		<div class="col-3 col-s-12">
-			<div class="right-div">
-				<img width="88%" src="images/image.jpg">
-			</div>
+		<div class="col-3 col-s-3 menu">
+			<ul>
+				<li>Free Storage upto 10MB</li>
+				<li>Security Alerts</li>
+				<li>Access from anywhere</li>
+				<li>Document Conversion</li>
+			</ul>
 		</div>
 	</div>
 
