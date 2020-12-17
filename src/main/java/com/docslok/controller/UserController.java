@@ -66,8 +66,8 @@ public class UserController {
 	@RequestMapping(value = "/post-registration", method = RequestMethod.POST)
 	public ModelAndView postRegistration(@Valid User user, BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView("redirect:/login");
-		User newlyCreatedUser = userService.findUserByUserName(user.getUsername());
-		if(newlyCreatedUser!=null) {
+		User newlyCreatedUser = userService.findUserByAadhaarNo(user.getAadhaarNo());
+		if(newlyCreatedUser==null) {
 			newlyCreatedUser.setAadhaarNo(user.getAadhaarNo());
 			newlyCreatedUser.setSecretPin(user.getSecretPin());
 			userService.save(newlyCreatedUser);

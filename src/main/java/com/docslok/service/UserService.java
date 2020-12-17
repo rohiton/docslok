@@ -30,6 +30,10 @@ public class UserService {
 	public User findUserByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
+	
+	public User findUserByAadhaarNo(Long aadhaarNo) {
+		return userRepository.findUserByAadhaarNo(aadhaarNo);
+	}
 
 	public User findUserByUserName(String username) {
 		return userRepository.findByUsername(username);

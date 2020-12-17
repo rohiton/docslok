@@ -10,4 +10,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	User findByUsername(String username);
 	@SuppressWarnings("unchecked")
 	User save(User user);
+	User findUserByAadhaarNo(Long aadhaarNo);
 }
