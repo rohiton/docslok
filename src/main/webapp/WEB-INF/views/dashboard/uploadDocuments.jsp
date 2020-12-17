@@ -6,8 +6,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/user/dashboard.css">
-<title>Dashboard</title>
+<link rel="stylesheet" href="css/dashboard/uploadDocuments.css">
+<title>Upload Documents</title>
 </head>
 <body>
 
@@ -31,15 +31,7 @@
 		</div>
 		
 	<div id="center-login" class="col-6 col-s-9">
-		<h1 class="center-login">Welcome to docslok</h1>
-		<p id="alert">${message}</p>
-		
-		<c:if test="${not empty emailNotVerifiedMessage}">
-    		<p id="email-not-verified-message">${emailNotVerifiedMessage}</p>
-		</c:if>
-		<c:if test="${not empty aadhaarNotUpdated}">
-    		<p id="email-not-verified-message">${aadhaarNotUpdated}</p><p id="alert">Click <a href="/app/post-registration">here</a> to update AADHAAR number</p>
-		</c:if>
+		<h1 class="center-login">Upload Documents</h1>
 	</div>
 	
 		<div class="col-3 col-s-3 menu">

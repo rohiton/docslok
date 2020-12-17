@@ -37,7 +37,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/contact").permitAll()
 				.antMatchers("/about").permitAll()
 				.antMatchers("/dashboard/**").hasAuthority("USER")
-				.antMatchers("/confirm-account/**").hasAuthority("USER").anyRequest().authenticated()
+				.antMatchers("/dashboard/convert-documents").hasAuthority("USER")
+				.antMatchers("/dashboard/issued-documents").hasAuthority("USER")
+				.antMatchers("/dashboard/manage-account").hasAuthority("USER")
+				.antMatchers("/dashboard/my-activities").hasAuthority("USER")
+				.antMatchers("/dashboard//shared-documents").hasAuthority("USER")
+				.antMatchers("/dashboard/storage-info").hasAuthority("USER")
+				.antMatchers("/dashboard/update-profile").hasAuthority("USER")
+				.antMatchers("/dashboard/upload-documents").hasAuthority("USER")
+				.antMatchers("/confirm-account").hasAuthority("USER").anyRequest().authenticated()
 				.and().csrf().disable()
 				.formLogin().loginPage("/login").failureUrl("/login?error=true").defaultSuccessUrl("/dashboard")
 				.usernameParameter("username").passwordParameter("password")
@@ -47,7 +55,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+		web.ignoring().antMatchers("/resources/**", "/static/**", "/static/css/dashboard/**", "/css/**", "/js/**", "/images/**");
 	}
 
 }
