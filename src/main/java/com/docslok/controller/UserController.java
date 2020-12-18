@@ -98,16 +98,18 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("user/dashboard");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
-		if (!user.isEmailVerified()) {
-			mav.addObject("emailNotVerifiedMessage",
-					"Before you can start securing documents, you need to first verify your email address, please check your inbox.");
+		if(user!=null) {
+			if (!user.isEmailVerified()) {
+				mav.addObject("emailNotVerifiedMessage",
+						"Before you can start securing documents, you need to first verify your email address, please check your inbox.");
+			}
+			if (user.getAadhaarNo() == null || user.getSecretPin() == null) {
+				mav.addObject("aadhaarNotUpdated",
+						"Looks like you've not updated your AADHAAR number in your account. Kindly update it else you won't be able to secure your documents");
+			}
+			mav.addObject("message",
+					"Thank you for creating an account on docslok. You can now start securing your documents with us.");
 		}
-		if (user.getAadhaarNo() == null || user.getSecretPin() == null) {
-			mav.addObject("aadhaarNotUpdated",
-					"Looks like you've not updated your AADHAAR number in your account. Kindly update it else you won't be able to secure your documents");
-		}
-		mav.addObject("message",
-				"Thank you for creating an account on docslok. You can now start securing your documents with us.");
 		return mav;
 	}
 }
