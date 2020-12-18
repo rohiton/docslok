@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.docslok.model.ConfirmationToken;
 import com.docslok.model.User;
+import com.docslok.model.User.AccountStatus;
 import com.docslok.repository.ConfirmationTokenRepository;
 import com.docslok.service.EmailSenderService;
 import com.docslok.service.UserService;
@@ -95,10 +96,18 @@ public class UserController {
 
 	@RequestMapping(value = "/dashboard")
 	public ModelAndView dashboard() {
-		ModelAndView mav = new ModelAndView("user/dashboard");
+		ModelAndView mav = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
 		if(user!=null) {
+			if(user.getAccountStatus().equals(AccountStatus.DROPPED)) {
+				mav.setViewName("user/accountDeletedPage");
+				return mav;
+			}
+			if(user.getAccountStatus().equals(AccountStatus.SUSPENDED)){
+				mav.setViewName("user/accountDeactivatedPage");
+				return mav;
+			}
 			if (!user.isEmailVerified()) {
 				mav.addObject("emailNotVerifiedMessage",
 						"Before you can start securing documents, you need to first verify your email address, please check your inbox.");
@@ -109,6 +118,39 @@ public class UserController {
 			}
 			mav.addObject("message",
 					"Thank you for creating an account on docslok. You can now start securing your documents with us.");
+		}
+		mav.setViewName("user/dashboard");
+		return mav;
+	}
+	
+	@RequestMapping(value="/dashboard/update-profile", method = RequestMethod.POST)
+	public ModelAndView updateProfile(@Valid User user, BindingResult bindingResult) {
+		ModelAndView mav = new ModelAndView("redirect:/dashboard");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User u = userService.findUserByUserName(auth.getName());
+		return mav;
+	}
+	
+	@RequestMapping(value="dashboard/manage-account/account-delete")
+	public ModelAndView deleteAccount() {
+		ModelAndView mav = new ModelAndView("redirect:/login");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByUserName(auth.getName());
+		if(user!=null) {
+			user.setAccountStatus(AccountStatus.DROPPED);
+			userService.save(user);
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value="dashboard/manage-account/account-deactivate")
+	public ModelAndView deactivateAccount() {
+		ModelAndView mav = new ModelAndView("redirect:/login");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByUserName(auth.getName());
+		if(user!=null) {
+			user.setAccountStatus(AccountStatus.SUSPENDED);
+			userService.save(user);
 		}
 		return mav;
 	}

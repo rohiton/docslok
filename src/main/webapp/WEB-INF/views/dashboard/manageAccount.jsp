@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard/manageAccount.css">
 <title>Manage Account</title>
+<style>
+</style>
 </head>
 <body>
 
@@ -32,7 +34,10 @@
 		</div>
 		
 	<div id="center-login" class="col-6 col-s-9">
-		<h1 class="center-login">Manage Account</h1>
+		<h1 class="center-login" id="center-header">Manage Account</h1>
+		<p class="center-login">Your current Account status is ${user.accountStatus}</p>
+		<p class="center-login">To delete your account permanently, click <a href="/app/dashboard/manage-account/account-delete">here</a></p>
+		<p class="center-login">To deactivate your account, click <a href="/app/dashboard/manage-account/account-deactivate">here</a></p>
 	</div>
 	
 		<div class="col-3 col-s-3 menu">

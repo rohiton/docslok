@@ -105,18 +105,17 @@ html {
 #center-login {
 	margin-top: 16px;
 	color: black;
+			font-family: 'Roboto Condensed', sans-serif;
+		
 }
 
 #alert {
 	color: black;
 }
 
-h1 {
-	font-family: 'Roboto Condensed', sans-serif;
-	color: black;
-	font-size: 30px;
+#center-header{
+	text-align:center;
 }
-
 p {
 	font-family: 'Roboto Condensed', sans-serif;
 	color: black;
