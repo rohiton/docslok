@@ -57,7 +57,7 @@ public class UserController {
 					+ "Before you can start using your docslok account, you need to first verify by clicking the below link: "
 					+ "http://localhost:8090/app/account-confirmation?token="
 					+ confirmationToken.getConfirmationToken());
-			emailSenderService.sendEmail(mailMessage);
+			//emailSenderService.sendEmail(mailMessage);
 			mav.setViewName("user/postRegistration");
 		}
 		return mav;

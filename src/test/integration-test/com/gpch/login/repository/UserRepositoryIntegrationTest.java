@@ -41,7 +41,7 @@ public class UserRepositoryIntegrationTest {
         userRepository.deleteAll();
         roleRepository.deleteAll();
 
-        Role role = roleRepository.save(Role.builder().role("USER").build());
+        Role role = roleRepository.save(Role.builder().role("ROLE_USER").build());
         User user = userRepository.save(User.builder()
                 .name("Gustavo")
                 .lastName("Ponce")

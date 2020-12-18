@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/user/dashboard.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/dashboard.css">
 <title>Dashboard</title>
 </head>
 <body>

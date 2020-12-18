@@ -43,7 +43,7 @@ public class UserService {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setAccountStatus(AccountStatus.ACTIVE);
 		user.setActive(true);
-		Role userRole = roleRepository.findByRole("USER");
+		Role userRole = roleRepository.findByRole("ROLE_USER");
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		return userRepository.save(user);
 	}

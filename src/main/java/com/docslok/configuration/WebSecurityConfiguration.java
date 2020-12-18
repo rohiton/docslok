@@ -30,32 +30,31 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-				.antMatchers("/**").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/register").permitAll()
 				.antMatchers("/post-registration").permitAll()
 				.antMatchers("/contact").permitAll()
 				.antMatchers("/about").permitAll()
-				.antMatchers("/dashboard/**").hasAuthority("USER")
-				.antMatchers("/dashboard/convert-documents").hasAuthority("USER")
-				.antMatchers("/dashboard/issued-documents").hasAuthority("USER")
-				.antMatchers("/dashboard/manage-account").hasAuthority("USER")
-				.antMatchers("/dashboard/my-activities").hasAuthority("USER")
-				.antMatchers("/dashboard//shared-documents").hasAuthority("USER")
-				.antMatchers("/dashboard/storage-info").hasAuthority("USER")
-				.antMatchers("/dashboard/update-profile").hasAuthority("USER")
-				.antMatchers("/dashboard/upload-documents").hasAuthority("USER")
-				.antMatchers("/confirm-account").hasAuthority("USER").anyRequest().authenticated()
+				.antMatchers("/dashboard/").hasRole("USER")
+				.antMatchers("/dashboard/convert-documents").hasRole("USER")
+				.antMatchers("/dashboard/issued-documents").hasRole("USER")
+				.antMatchers("/dashboard/manage-account").hasRole("USER")
+				.antMatchers("/dashboard/my-activities").hasRole("USER")
+				.antMatchers("/dashboard//shared-documents").hasRole("USER")
+				.antMatchers("/dashboard/storage-info").hasRole("USER")
+				.antMatchers("/dashboard/update-profile").hasRole("USER")
+				.antMatchers("/dashboard/upload-documents").hasRole("USER")
+				.antMatchers("/confirm-account").hasRole("USER")
 				.and().csrf().disable()
-				.formLogin().loginPage("/login").failureUrl("/login?error=true").defaultSuccessUrl("/dashboard")
-				.usernameParameter("username").passwordParameter("password")
+					.formLogin().loginPage("/login").failureUrl("/login?error=true").defaultSuccessUrl("/dashboard")
+					.usernameParameter("username").passwordParameter("password")
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").and()
-				.exceptionHandling();
+					.exceptionHandling();
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**", "/static/**", "/static/css/dashboard/**", "/css/**", "/js/**", "/images/**");
+		web.ignoring().antMatchers("/resources/**", "/static/**","/css/**");
 	}
 
 }
