@@ -5,11 +5,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
-<title>Login to docslok</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/contact.css">
+<title>Account Deleted</title>
 </head>
 <body>
-
 	<div class="header">
 		<h1>docslok</h1>
 		<p>Securing your documents</p>
@@ -33,20 +32,11 @@
 			</ul>
 		</div>
 
-		<div id="center-login" class="col-6 col-s-9">
-			<h2 class="center-login">Login to docslok</h2>
+		<div id="center-div-parent" class="col-6 col-s-9">
+			<h2 id="center-div-child-header">Your account has been deleted permanently</h2>
 			<br />
-			<div>
-				<form action="/app/login" method="POST">
-					<input id="input" type="text" id="username" name="username"
-						placeholder="Username" /> <br /> <input id="input"
-						type="password" placeholder="Password" id="password"
-						name="password" /> <br />
-					<button class="login-button" name="Login" type="Submit">Login</button>
-				</form>
-			</div>
+			<p id="center-div-child-para">Upon your account deletion request, we've removed your account information and data associated with it. You won't be able to use this account anymore.</p>
 		</div>
-
 		<div class="col-3 col-s-3 menu">
 			<ul>
 				<li>Free Storage upto 10MB</li>
@@ -61,12 +51,5 @@
 		<h1>docslok</h1>
 		<p>Securing your documents</p>
 	</div>
-	
-	
-	<form enctype="multipart/form-data" action="upload-file" method="post">
-	Upload : <input type="file" name="file">
-	<input type="submit">
-	</form>
-	
 </body>
 </html>

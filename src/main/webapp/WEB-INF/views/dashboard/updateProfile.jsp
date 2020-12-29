@@ -12,27 +12,28 @@
 
 table {
     width: 100%;
-    border: 4px solid rgb(15 134 101);
-    border-radius: 5px;
-    padding: 50px;
-    font-size:20px;
+    font-size:18px;
 }
 input {
-    /* text-align: center; */
-    font-size: 20px;
-    width: 251px;
-    height: 40px;
-    border: 3px solid;
+border-radius: 3px;
+    font-size: 18px;
     padding: 5px;
     font-family: 'Roboto Condensed', sans-serif;
-    /* color: white; */
-    /* background: rgb(15 134 101); */
-    border: none;
-    border: 3px solid rgb(15 134 101);
+    border: 1px solid black;
+    margin-top: 5px;
+    width: 231px;
+    margin-bottom:20px;
 }
-input:disabled{
-background: #e7e3e3;
-    color: black;}
+input:disabled {
+    background: rgb(243 245 245);
+}
+input[type="submit"]{
+    margin-top: 26px;
+    background: rgb(15 134 101);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
 </style>
 </head>
 <body>
@@ -61,55 +62,27 @@ background: #e7e3e3;
 		<h1 class="center-login" id="center-header">Update Profile</h1>
 		
 		<form method="POST" action="/app/dashboard/update-profile">
-			<table>
+		<table>
 			<tr>
-				<td><label>User ID</label></td>
-				<td><input type="number" name="userId"/ disabled value="${user.userId}"></td>
+				<td><label>User ID</label><br/><input type="number" name="userId" disabled value="${user.userId}"></td>
+				<td><label>Aadhaar Number</label><br/><input type="number" name="aadhaarNo" disabled  value="${user.aadhaarNo}"/></td>
+				<td><label>Account Status</label><br/><input type="text" name="accountStatus" disabled  value="${user.accountStatus}"/></td>
+			</tr>
+			<tr>	
+				<td><label>Username</label><br/><input type="text" name="username" disabled value="${user.username}"/></td>
+				<td><label>Firstname</label><br/><input  type="text" name="firstName" value="${user.firstName}"/></td>
+				<td><label>Lastname</label><br/><input type="text" name="lastName" value="${user.lastName}"/></td>
 			</tr>
 			<tr>
-				<td><label>Firstname</label></td>
-				<td><input type="text" name="firstName" value="${user.firstName}"/></td>
+				<td><label>Email</label><br/><input type="text" name="email" disabled value="${user.email}"/></td>
+				<td><label>Secret Pin</label><br/><input type="number" name="secretPin" value="${user.secretPin}"/></td>
 			</tr>
-			<tr>
-				<td><label>Lastname</label></td>
-				<td><input type="text" name="lastName" value="${user.lastName}"/></td>
-			</tr>
-			<tr>
-				<td><label>Username</label></td>
-				<td><input type="text" name="username" value="${user.username}"/></td>
-			</tr>
-			<tr>
-				<td><label>Email</label></td>
-				<td><input type="text" name="email" value="${user.email}"/></td>
-			</tr>
-			<tr>
-				<td><label>Password</label></td>
-				<td><input type="text" name="password" value="${user.password}"/></td>
-			</tr>
-			<tr>
-				<td><label>Aadhaar Number</label></td>
-				<td><input type="number" name="aadhaarNo" disabled  value="${user.aadhaarNo}"/></td>
-			</tr>
-			<tr>
-				<td><label>Secret Pin</label></td>
-				<td><input type="number" name="secretPin" value="${user.secretPin}"/></td>
-			</tr>
-			<tr>
-				<td><label>Account Status</label></td>
-				<td><input type="text" name="accountStatus" disabled  value="${user.accountStatus}"/></td>
-			</tr>
-<%-- 			<tr>
-				<td><label>Is Email Verified</label></td>
-				<td><input type="text" name="isEmailVerified" value="${user.isEmailVerified}"/></td>
-			</tr> --%>
-<%-- 			<tr>
-				<td><label>Is Account Ative</label></td>
-				<td><input type="text" name="isActive" value="${user.isActive}"></td>
-			</tr> --%>
 			<tr>
 				<td><input style="margin-top: 26px;" type="submit" name="submit" value="Update Profile"></td>
 			</tr>
 			</table>
+			<p>* You can only change your firstname, lastname and secret pin</p>
+			<p>* For additional help, raise a ticket <a href="/app/dashboard/manage-account/raise-ticket">here</a></p>
 		</form>
 	</div>
 	

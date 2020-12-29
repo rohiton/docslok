@@ -1,5 +1,7 @@
 package com.docslok.controller;
 
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +65,20 @@ public class UserController {
 		}
 		return mav;
 	}
+	
+	@RequestMapping(value = "/raise-ticket", method = RequestMethod.POST)
+	public ModelAndView raiseticket(@RequestParam("email") String email, @RequestParam("subject") String subject, @RequestParam("message") String message) {
+		ModelAndView mav = new ModelAndView();
+			SimpleMailMessage mailMessage = new SimpleMailMessage();
+			mailMessage.setTo("rohitkumar1121.rk@gmail.com");
+			mailMessage.setSubject(subject);
+			mailMessage.setFrom(email);
+			mailMessage.setText(message);
+			emailSenderService.sendEmail(mailMessage);
+			mav.setViewName("redirect:/dashboard");
+		return mav;
+	}
+
 
 	@RequestMapping(value = "/post-registration", method = RequestMethod.POST)
 	public ModelAndView postRegistration(@Valid User user, BindingResult bindingResult) {
@@ -101,10 +117,12 @@ public class UserController {
 		User user = userService.findUserByUserName(auth.getName());
 		if(user!=null) {
 			if(user.getAccountStatus().equals(AccountStatus.DROPPED)) {
+				mav.addObject("user", user);
 				mav.setViewName("user/accountDeletedPage");
 				return mav;
 			}
 			if(user.getAccountStatus().equals(AccountStatus.SUSPENDED)){
+				mav.addObject("user", user);
 				mav.setViewName("user/accountDeactivatedPage");
 				return mav;
 			}
@@ -128,6 +146,10 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("redirect:/dashboard");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User u = userService.findUserByUserName(auth.getName());
+		u.setFirstName(user.getFirstName());
+		u.setLastName(user.getLastName());
+		u.setSecretPin(user.getSecretPin());
+		userService.save(u); 
 		return mav;
 	}
 	
@@ -138,8 +160,31 @@ public class UserController {
 		User user = userService.findUserByUserName(auth.getName());
 		if(user!=null) {
 			user.setAccountStatus(AccountStatus.DROPPED);
+			Date date = new Date();
+			user.setAccountDeletedOn(date);
 			userService.save(user);
 		}
+		return mav;
+	}
+	
+	@RequestMapping(value="dashboard/manage-account/account-reactivate")
+	public ModelAndView accountReactivate() {
+		ModelAndView mav = new ModelAndView("redirect:/login");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByUserName(auth.getName());
+		if(user!=null) {
+			user.setAccountStatus(AccountStatus.ACTIVE);
+			userService.save(user);
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value="/dashboard/manage-account/raise-ticket")
+	public ModelAndView raiseTicket() {
+		ModelAndView mav = new ModelAndView("dashboard/raiseTicket");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByUserName(auth.getName());
+		mav.addObject(user);
 		return mav;
 	}
 	
@@ -150,6 +195,8 @@ public class UserController {
 		User user = userService.findUserByUserName(auth.getName());
 		if(user!=null) {
 			user.setAccountStatus(AccountStatus.SUSPENDED);
+			Date date = new Date();
+			user.setAccountDeactivatedOn(date);
 			userService.save(user);
 		}
 		return mav;

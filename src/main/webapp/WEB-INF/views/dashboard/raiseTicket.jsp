@@ -6,9 +6,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard/manageAccount.css">
-<title>Manage Account</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard/uploadDocuments.css">
+<title>Raise Ticket</title>
 <style>
+input[type="submit"]{
+    margin-top: 26px;
+    background: rgb(15 134 101);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+input {
+border-radius: 3px;
+    font-size: 18px;
+    padding: 5px;
+    font-family: 'Roboto Condensed', sans-serif;
+    border: 1px solid black;
+    margin-top: 5px;
+    margin-bottom:20px;
+}
 </style>
 </head>
 <body>
@@ -34,17 +50,17 @@
 		</div>
 		
 	<div id="center-login" class="col-6 col-s-9">
-		<h1 class="center-login" id="center-header">Manage Account</h1>
-		<p class="center-login">Account Created on <b>${user.accountCreatedAt}</b></p>
-		<p class="center-login">The current status of your docslok account is <b>${user.accountStatus}</b></p>
-		<p class="center-login">You can also delete your account if you want but make sure you download all your documents that you've uploaded
-		in your docslok account because once your account is deleted, all the information, documents and other files associated with your 
-		account will be deleted permanently as well.</p>
-		<a href="/app/dashboard/manage-account/account-delete">Click here to delete your account</a> 
-		<p class="center-login">If you don't want to delete your account permanently then you can also deactivate your account. Your information will not get 
-		deleted and you can reactivate your account by just login as usual.</p>
-		<a href="/app/dashboard/manage-account/account-deactivate">Click here to deactivate your account</a> 
+		<h1 class="center-login">Raise A Ticket</h1>
+		<form method="post" action="/app/raise-ticket">
+		<table>
+		<tr><td>Email</td><td><input type="email" name="email" value="${user.email}"/></td></tr>
+		<tr><td>Subject</td><td><input type="text" name="subject"/></td></tr>
+		<tr><td>Message</td><td><textarea name="message" rows="3" cols="50"></textarea></td></tr>
+		<tr><td><input type="submit" value="Submit"/></td></tr>		
+		</table>
+		</form>
 	</div>
+	
 		<div class="col-3 col-s-3 menu">
 			<ul>
 				<li><a href="/app/dashboard/convert-documents">Convert Documents</a></li>

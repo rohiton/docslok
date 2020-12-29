@@ -26,8 +26,8 @@ public class CommonConfiguration implements WebMvcConfigurer {
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587);
 
-		mailSender.setUsername("username");
-		mailSender.setPassword("password");
+		mailSender.setUsername("Adm.employeecare@gmail.com");
+		mailSender.setPassword("Adm@ee123");
 
 		Properties props = mailSender.getJavaMailProperties();
 		props.put("mail.transport.protocol", "smtp");

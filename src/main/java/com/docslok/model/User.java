@@ -1,6 +1,8 @@
 package com.docslok.model;
 
 import javax.persistence.*;
+
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -35,7 +37,16 @@ public class User {
 
 	@Column(name = "IS_ACTIVE")
 	private boolean isActive;
-
+	
+	@Column(name = "ACCOUNT_CREATED_AT")
+	private Date accountCreatedAt;
+	
+	@Column(name = "ACCOUNT_DELETED_ON")
+	private Date accountDeletedOn;
+	
+	@Column(name = "ACCOUNT_DEACTIVATED_ON")
+	private Date accountDeactivatedOn;
+	
 	@Column(name = "IS_EMAIL_VERIFIED")
 	private boolean isEmailVerified;
 
@@ -137,6 +148,30 @@ public class User {
 
 	public void setAccountStatus(AccountStatus accountStatus) {
 		this.accountStatus = accountStatus;
+	}
+	
+	public Date getAccountCreatedAt() {
+		return accountCreatedAt;
+	}
+
+	public void setAccountCreatedAt(Date accountCreatedAt) {
+		this.accountCreatedAt = accountCreatedAt;
+	}
+	
+	public Date getAccountDeletedOn() {
+		return accountDeletedOn;
+	}
+
+	public void setAccountDeletedOn(Date accountDeletedOn) {
+		this.accountDeletedOn = accountDeletedOn;
+	}
+
+	public Date getAccountDeactivatedOn() {
+		return accountDeactivatedOn;
+	}
+
+	public void setAccountDeactivatedOn(Date accountDeactivatedOn) {
+		this.accountDeactivatedOn = accountDeactivatedOn;
 	}
 
 	public Set<Role> getRoles() {

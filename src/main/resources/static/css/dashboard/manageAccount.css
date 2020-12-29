@@ -45,9 +45,6 @@ html {
 	text-decoration: none;
 }
 
-#center-header{
-	text-align:center;
-}
 
 .login-button {
 	font-family: 'Roboto Condensed';
@@ -114,14 +111,12 @@ html {
 #alert {
 	color: black;
 }
-
 h1 {
 	font-family: 'Roboto Condensed', sans-serif;
 	color: black;
-	font-size: 30px;
+	font-size: 22px;
 }
-
-p {
+p,a {
 	font-family: 'Roboto Condensed', sans-serif;
 	color: black;
 	font-size: 18px;
