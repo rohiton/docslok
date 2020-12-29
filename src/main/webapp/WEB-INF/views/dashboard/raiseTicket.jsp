@@ -25,6 +25,11 @@ border-radius: 3px;
     margin-top: 5px;
     margin-bottom:20px;
 }
+table{
+color: black;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size:18px;
+}
 </style>
 </head>
 <body>

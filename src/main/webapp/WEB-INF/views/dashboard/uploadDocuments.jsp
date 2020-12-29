@@ -8,6 +8,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard/uploadDocuments.css">
 <title>Upload Documents</title>
+<style type="text/css">
+input {
+border-radius: 3px;
+    font-size: 18px;
+    padding: 5px;
+    font-family: 'Roboto Condensed', sans-serif;
+    border: 1px solid black;
+    margin-top: 5px;
+    width: 231px;
+    margin-bottom:20px;
+}
+input[type="submit"]{
+    margin-top: 26px;
+    background: rgb(15 134 101);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+table{
+color: black;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size:18px;
+}
+</style>
 </head>
 <body>
 
@@ -33,6 +57,26 @@
 		
 	<div id="center-login" class="col-6 col-s-9">
 		<h1 class="center-login">Upload Documents</h1>
+		<form method="post" action="/app/dashboard/upload-documents/document/upload" enctype="multipart/form-data">
+		<table>
+		<tr>
+		<td>Upload File</td>
+		<td><input type="file" name="document"/></td>
+		</tr>
+		<tr>
+		<td>File Name</td>
+		<td><input type="text" name="docName"/></td>
+		</tr>
+		<tr>
+		<td>Description (Optional)</td>
+		<td><input type="text" name="docDecsription"/></td>
+		</tr>
+		<tr>
+		<td><input type="submit" value="Upload Document"/></td>
+		</tr>
+		</table>
+		</form>
+		<p>* You can upload any kind of file</p>
 	</div>
 	
 		<div class="col-3 col-s-3 menu">

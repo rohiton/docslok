@@ -37,6 +37,9 @@ public class DashboardController {
 	@RequestMapping("/dashboard/my-activities")
 	public ModelAndView postRegistrationPage() {
 		ModelAndView  mav = new ModelAndView("/dashboard/myActivities");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByUserName(auth.getName());
+		mav.addObject(user);
 		return mav;
 	}
 

@@ -61,12 +61,5 @@
 		<h1>docslok</h1>
 		<p>Securing your documents</p>
 	</div>
-	
-	
-	<form enctype="multipart/form-data" action="upload-file" method="post">
-	Upload : <input type="file" name="file">
-	<input type="submit">
-	</form>
-	
 </body>
 </html>

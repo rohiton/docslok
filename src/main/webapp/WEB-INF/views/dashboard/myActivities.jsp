@@ -33,6 +33,8 @@
 		
 	<div id="center-login" class="col-6 col-s-9">
 		<h1 class="center-login">My Activities</h1>
+		<p>Account created at ${user.accountCreatedAt}</p>
+		
 	</div>
 	
 		<div class="col-3 col-s-3 menu">

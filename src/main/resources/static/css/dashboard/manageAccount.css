@@ -122,6 +122,10 @@ p,a {
 	font-size: 18px;
 }
 
+a{
+	color:red;
+}
+
 #email-not-verified-message{
 	background-color:#ededed;
 	padding:10px;
