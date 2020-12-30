@@ -65,17 +65,17 @@ public class UserController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/raise-ticket", method = RequestMethod.POST)
 	public ModelAndView raiseticket(@RequestParam("email") String email, @RequestParam("subject") String subject, @RequestParam("message") String message) {
 		ModelAndView mav = new ModelAndView();
-			SimpleMailMessage mailMessage = new SimpleMailMessage();
-			mailMessage.setTo("rohitkumar1121.rk@gmail.com");
-			mailMessage.setSubject(subject);
-			mailMessage.setFrom(email);
-			mailMessage.setText(message);
-			emailSenderService.sendEmail(mailMessage);
-			mav.setViewName("redirect:/dashboard");
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setTo("rohitkumar1121.rk@gmail.com");
+		mailMessage.setSubject(subject);
+		mailMessage.setFrom(email);
+		mailMessage.setText(message);
+		emailSenderService.sendEmail(mailMessage);
+		mav.setViewName("redirect:/dashboard");
 		return mav;
 	}
 
@@ -140,7 +140,7 @@ public class UserController {
 		mav.setViewName("user/dashboard");
 		return mav;
 	}
-	
+
 	@RequestMapping(value="/dashboard/update-profile", method = RequestMethod.POST)
 	public ModelAndView updateProfile(@Valid User user, BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView("redirect:/dashboard");
@@ -152,7 +152,7 @@ public class UserController {
 		userService.save(u); 
 		return mav;
 	}
-	
+
 	@RequestMapping(value="dashboard/manage-account/account-delete")
 	public ModelAndView deleteAccount() {
 		ModelAndView mav = new ModelAndView("redirect:/login");
@@ -166,7 +166,7 @@ public class UserController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping(value="dashboard/manage-account/account-reactivate")
 	public ModelAndView accountReactivate() {
 		ModelAndView mav = new ModelAndView("redirect:/login");
@@ -178,7 +178,7 @@ public class UserController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping(value="/dashboard/manage-account/raise-ticket")
 	public ModelAndView raiseTicket() {
 		ModelAndView mav = new ModelAndView("dashboard/raiseTicket");
@@ -187,7 +187,7 @@ public class UserController {
 		mav.addObject(user);
 		return mav;
 	}
-	
+
 	@RequestMapping(value="dashboard/manage-account/account-deactivate")
 	public ModelAndView deactivateAccount() {
 		ModelAndView mav = new ModelAndView("redirect:/login");

@@ -81,53 +81,53 @@ html {
 	padding: 0;
 }
 
-.menu li  {
+.menu li {
 	padding: 10px;
 	margin-bottom: 7px;
 	font-family: 'Roboto Condensed', sans-serif;
 	border-radius: 4px;
-	background-color: rgb(15 134 101);
+	background-color: rgb(15, 134, 101);
 	color: #ffffff;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.menu li a{
-		font-family: 'Roboto Condensed', sans-serif;
-		color: #ffffff;
-	
-	text-decoration:none;
+.menu li a {
+	font-family: 'Roboto Condensed', sans-serif;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 .menu li:hover {
-	background-color: rgb(18 85 67);
+	background-color: rgb(18, 85, 67);
 }
 
 #center-login {
 	margin-top: 16px;
 	color: black;
 	font-family: 'Roboto Condensed', sans-serif;
-		
 }
 
 #alert {
 	color: black;
 }
 
-#center-header{
-	font-size:22px;
-	}
+#center-header {
+	font-size: 22px;
+}
+
 p {
 	font-family: 'Roboto Condensed', sans-serif;
 	color: black;
 	font-size: 18px;
 }
 
-#email-not-verified-message{
-	background-color:#ededed;
-	padding:10px;
-	border-radius:5px;
-	border:none;
+#email-not-verified-message {
+	background-color: #ededed;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
 }
+
 .right-div {
 	background-color: black;
 	padding: 15px;
@@ -273,13 +273,11 @@ input {
 	}
 }
 
-
-
 .header h1 {
-    color: black;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 40px;
-    padding-left: 15px;
-    padding-top: 5px;
-    margin-bottom: 0px;
+	color: black;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 40px;
+	padding-left: 15px;
+	padding-top: 5px;
+	margin-bottom: 0px;
 }

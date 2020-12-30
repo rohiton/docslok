@@ -45,7 +45,6 @@ html {
 	text-decoration: none;
 }
 
-
 .login-button {
 	font-family: 'Roboto Condensed';
 	/* padding: 10px; */
@@ -82,25 +81,24 @@ html {
 	padding: 0;
 }
 
-.menu li  {
+.menu li {
 	padding: 10px;
 	margin-bottom: 7px;
 	font-family: 'Roboto Condensed', sans-serif;
 	border-radius: 4px;
-	background-color: rgb(15 134 101);
+	background-color: rgb(15, 134, 101);
 	color: #ffffff;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.menu li a{
-		font-family: 'Roboto Condensed', sans-serif;
-		color: #ffffff;
-	
-	text-decoration:none;
+.menu li a {
+	font-family: 'Roboto Condensed', sans-serif;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 .menu li:hover {
-	background-color: rgb(18 85 67);
+	background-color: rgb(18, 85, 67);
 }
 
 #center-login {
@@ -111,27 +109,29 @@ html {
 #alert {
 	color: black;
 }
+
 h1 {
 	font-family: 'Roboto Condensed', sans-serif;
 	color: black;
 	font-size: 22px;
 }
-p,a {
+
+p, a {
 	font-family: 'Roboto Condensed', sans-serif;
 	color: black;
-	font-size: 18px;
 }
 
-a{
-	color:red;
+a {
+	color: red;
 }
 
-#email-not-verified-message{
-	background-color:#ededed;
-	padding:10px;
-	border-radius:5px;
-	border:none;
+#email-not-verified-message {
+	background-color: #ededed;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
 }
+
 .right-div {
 	background-color: black;
 	padding: 15px;

@@ -19,6 +19,8 @@ public class DashboardController {
 	@RequestMapping("/dashboard/issued-documents")
 	public ModelAndView issuedDocuments() {
 		ModelAndView  mav = new ModelAndView("/dashboard/issuedDocuments");
+		//Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		//User user = userService.findUserByUserName(auth.getName());
 		return mav;
 	}
 
@@ -33,7 +35,7 @@ public class DashboardController {
 		ModelAndView  mav = new ModelAndView("/dashboard/sharedDocuments");
 		return mav;
 	}
-	
+
 	@RequestMapping("/dashboard/my-activities")
 	public ModelAndView postRegistrationPage() {
 		ModelAndView  mav = new ModelAndView("/dashboard/myActivities");

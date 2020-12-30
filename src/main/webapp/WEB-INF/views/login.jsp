@@ -3,9 +3,14 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/login.css">
 <title>Login to docslok</title>
 </head>
 <body>
@@ -15,10 +20,8 @@
 		<p>Securing your documents</p>
 
 		<div class="header-links">
-			<a href="/app">Home</a> 
-			<a href="/app/login">Login</a> 
-			<a href="/app/registration">Register</a> 
-			<a href="/app/about-docslok">About</a> 
+			<a href="/app">Home</a> <a href="/app/login">Login</a> <a
+				href="/app/registration">Register</a> <a href="/app/about-docslok">About</a>
 			<a href="/app/contact-docslok">Contact</a>
 		</div>
 	</div>

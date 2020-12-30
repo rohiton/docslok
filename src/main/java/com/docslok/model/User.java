@@ -31,22 +31,22 @@ public class User {
 
 	@Column(name = "AADHAAR_NO", length=128, unique = true)
 	private Long aadhaarNo;
-	
+
 	@Column(name = "SECRET_PIN")
 	private Integer secretPin;
 
 	@Column(name = "IS_ACTIVE")
 	private boolean isActive;
-	
+
 	@Column(name = "ACCOUNT_CREATED_AT")
 	private Date accountCreatedAt;
-	
+
 	@Column(name = "ACCOUNT_DELETED_ON")
 	private Date accountDeletedOn;
-	
+
 	@Column(name = "ACCOUNT_DEACTIVATED_ON")
 	private Date accountDeactivatedOn;
-	
+
 	@Column(name = "IS_EMAIL_VERIFIED")
 	private boolean isEmailVerified;
 
@@ -149,7 +149,7 @@ public class User {
 	public void setAccountStatus(AccountStatus accountStatus) {
 		this.accountStatus = accountStatus;
 	}
-	
+
 	public Date getAccountCreatedAt() {
 		return accountCreatedAt;
 	}
@@ -157,7 +157,7 @@ public class User {
 	public void setAccountCreatedAt(Date accountCreatedAt) {
 		this.accountCreatedAt = accountCreatedAt;
 	}
-	
+
 	public Date getAccountDeletedOn() {
 		return accountDeletedOn;
 	}

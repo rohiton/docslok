@@ -19,15 +19,15 @@ public class CommonConfiguration implements WebMvcConfigurer {
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
 	public JavaMailSender getJavaMailSender() {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587);
 
-		mailSender.setUsername("Adm.employeecare@gmail.com");
-		mailSender.setPassword("Adm@ee123");
+		mailSender.setUsername("username");
+		mailSender.setPassword("password");
 
 		Properties props = mailSender.getJavaMailProperties();
 		props.put("mail.transport.protocol", "smtp");
@@ -37,7 +37,7 @@ public class CommonConfiguration implements WebMvcConfigurer {
 
 		return mailSender;
 	}
-	
+
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");

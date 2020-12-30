@@ -31,7 +31,7 @@ public class UserService {
 	public User findUserByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
-	
+
 	public User findUserByAadhaarNo(Long aadhaarNo) {
 		return userRepository.findUserByAadhaarNo(aadhaarNo);
 	}
@@ -39,7 +39,7 @@ public class UserService {
 	public User findUserByUserName(String username) {
 		return userRepository.findByUsername(username);
 	}
-	
+
 	public User saveAsNewUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setAccountStatus(AccountStatus.ACTIVE);
@@ -50,7 +50,7 @@ public class UserService {
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		return userRepository.save(user);
 	}
-	
+
 	public User save(User user) {
 		return userRepository.save(user);
 	}
