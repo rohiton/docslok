@@ -6,7 +6,7 @@ The primary goal of this project is to create a platform where user can upload t
 
 ## docslok features
 
-1. User can create their account and submit the details such as Aadhaar Number & Secret PIN
+1. User can create their account and submit the details like Aadhaar Number & Secret PIN
 2. After creating a account, email confirmation will be sent to the registered user
 3. User won't be able to upload their documents unless he verify their email and add the Aadhaar Number & Secret PIN
 4. User can update their profile by going to Update Profile page
